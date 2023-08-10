@@ -1,7 +1,9 @@
 pipeline {
-    agent any
-    environment {
-        JAVA_OPTS = "-Dhudson.plugins.git.GitSCM.ALLOW_LOCAL_CHECKOUT=true"
+    agent {
+        docker {
+            image 'node:16-buster-slim' 
+            args '-p 3000:3000' 
+        }
     }
     stages {
         stage('Build') { 
@@ -16,27 +18,3 @@ pipeline {
         }
     }
 }
-
-// node {
-//     // Langkah-langkah yang akan dieksekusi dalam node agen Jenkins
-
-//     stage('Checkout') {
-//         // Tahap checkout kode dari repositori
-//         checkout scm
-//     }
-    
-//     stage('Build') {
-//         // Tahap untuk melakukan build (misalnya, kompilasi)
-//         sh 'npm install'
-//     }
-
-//     stage('Test') {
-//         // Tahap untuk menjalankan pengujian
-//         sh './jenkins/scripts/test.sh'
-//     }
-
-//     stage('Deploy') {
-//         // Tahap untuk menerapkan ke lingkungan produksi (contoh sederhana)
-//         sh './jenkins/scripts/deploy.sh'
-//     }
-// }
