@@ -13,5 +13,10 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
+        stage('Yeah, Deploy'){
+            steps{
+                sh './jenkins/scripts/test.sh'
+            }
+        }
     }
 }
