@@ -24,7 +24,9 @@ pipeline {
             }
         }
         stage('Deploy'){
-            sleep 60
+            steps{
+                sleep 60
+            }
         }
     }
 }
