@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:16-buster-slim' 
+            args '-p 3000:3000' 
+        }
+    }
     stages {
         stage('Build') { 
             steps {
@@ -19,13 +24,7 @@ pipeline {
             }
         }
         stage('Deploy'){
-            steps{
-                script {
-                    docker.image('node:16-buster-slim')
-                    .run('--publish 3000:3000', './jenkins/scripts/deliver.sh')
-                }
-                sleep 60
-            }
+            sleep 60
         }
     }
 }
