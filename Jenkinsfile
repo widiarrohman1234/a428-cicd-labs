@@ -16,7 +16,8 @@ pipeline {
         stage('Deploy'){
             steps{
                 sh './jenkins/scripts/deliver.sh'
-                input message: ' Sudah selesai menggunakan React App?'
+                sleep 60
+                // input message: ' Sudah selesai menggunakan React App?'
                 // sh './jenkins/scripts/kill.sh'
             }
         }
