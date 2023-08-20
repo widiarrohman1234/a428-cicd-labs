@@ -16,5 +16,12 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
+        stage('Deploy'){
+            steps{
+                sh './jenkins/scripts/delivery.sh'
+                sleep 60
+                sh './jenkins/scripts/kill.sh'
+            }
+        }
     }
 }
